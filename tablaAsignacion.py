@@ -5,14 +5,14 @@ class Tabla:
 		self.position = [number for number in range(0, 24)]
 		self.tabla = [ 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 
 					'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E' ]
-		self.result = dict(zip(self.position, self.tabla))
+		self.resultado = dict(zip(self.position, self.tabla))
 
 	def get_tabla_len(self):
-		return len(self.result)
+		return len(self.resultado)
 
 	def get_letras_tabla(self, position):
 		try:
-			return self.result[position]
+			return self.resultado[position]
 		except:
 			return "Fuera de rango"
 
@@ -24,7 +24,7 @@ class Tabla:
 		return self.get_letras_tabla(position)
 
 	def mostrarTabla(self):
-		print(self.result)
+		print(self.resultado)
 
 
 if __name__ == "__main__":
