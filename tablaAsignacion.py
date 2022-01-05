@@ -1,38 +1,38 @@
-from classb_colors_enum import *
-
-class TablaAsignacion:
+class Tabla:
 
 	# podemos utilizar este ejercicio para sobrecarga de operaciones sobre listas
 	def __init__(self):
+		self.position = [number for number in range(0, 24)]
 		self.tabla = [ 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 
-						'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E' ]
+					'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E' ]
+		self.result = dict(zip(self.position, self.tabla))
 
-	def getLetra(self, posicion):
+	def get_tabla_len(self):
+		return len(self.result)
+
+	def get_letras_tabla(self, position):
 		try:
-			return self.tabla[posicion]
+			return self.result[position]
 		except:
-			return 'Posicion letra fuera de rango'
-
-	def getModulo(self):
-		return len(self.tabla)
-
-	def letraPermitida(self, letra):
-		return letra in self.tabla
+			return "Fuera de rango"
 
 	def calcularLetra(self, DNI):
 		# Obtener el numero del dni del string => dni sano
 		# Dividirlo por el número de letras (actualmente 23) y obtener el resto (división módulo)
 		# Consultar TablaAsignacion con ese resto = posicion
-		posicion = int( DNI ) % self.getModulo()
-		return self.getLetra(posicion)
+		position = int(DNI) % self.get_tabla_len()
+		return self.get_letras_tabla(position)
 
 	def mostrarTabla(self):
-		print(self.tabla)
+		print(self.result)
 
 
-if __name__ == 	'__main__':
+if __name__ == "__main__":
+	tabla = Tabla()
+	tabla.mostrarTabla()
 
-	import math
+
+	'''import math
 	import random
 
 	tabla = TablaAsignacion()
@@ -44,9 +44,9 @@ if __name__ == 	'__main__':
 		print('Letra %c:' % letra, tabla.letraPermitida(letra)) 
 
 	casosTest = [ #casos OK
-				 "78484464T","72376173A","01817200Q","95882054E","63587725Q",
-				 "26861694V","21616083Q","26868974Y","40135330P","89044648X",
-				 "80117501Z","34168723S","76857238R","66714505S","66499420A"]
+				"78484464T","72376173A","01817200Q","95882054E","63587725Q",
+				"26861694V","21616083Q","26868974Y","40135330P","89044648X",
+		        "80117501Z","34168723S","76857238R","66714505S","66499420A"]
 
 	### Añado casos test FAIL ALEATORIOS ###
 
@@ -74,4 +74,4 @@ if __name__ == 	'__main__':
 		if tabla.calcularLetra( dni[:-1] ) == dni[-1]:
 			print("%s %s" %(dni, Colors.OKGREEN + "OK" + Colors.ENDC) )
 		else:
-			print("%s %s" %(dni, Colors.FAIL + "FAIL" + Colors.ENDC))
+			print("%s %s" %(dni, Colors.FAIL + "FAIL" + Colors.ENDC))'''
